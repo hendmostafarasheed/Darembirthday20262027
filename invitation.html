@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#101820">
+<title>Darem Amin | Birthday Details</title><link rel="stylesheet" href="style.css">
+</head>
+<body class="invite-page">
+<audio id="birthday-song" src="10.Kol_Sana_Wenta_Tayeb.mp3" autoplay loop preload="auto"></audio>
+<button id="music-enable" type="button" hidden style="position:fixed;z-index:10000;right:12px;bottom:12px;padding:10px 14px;border:1px solid #d6a04a;border-radius:24px;background:#111820;color:#ffe1a1;font:600 13px sans-serif;box-shadow:0 0 16px #d6a04a66">♫ Tap to play birthday song</button>
+<main class="poster invite-poster" aria-label="Darem Amin birthday invitation details">
+  <img class="art" src="page2-invitation.gif" alt="Darem Amin birthday invitation details">
+  <a class="hotspot location" href="https://www.google.com/maps/search/?api=1&query=The+Riverside+Lounge+Ismailia+Egypt" target="_blank" rel="noopener" aria-label="Open venue location in Google Maps" title="Location"></a>
+  <a class="hotspot rsvp" href="https://wa.me/?text=Hi%2C%20I%27d%20like%20to%20RSVP%20for%20Darem%20Amin%27s%20birthday%20celebration%20on%2018%20August.%20Please%20count%20me%20in." target="_blank" rel="noopener" aria-label="RSVP via WhatsApp" title="RSVP"></a>
+  <a class="hotspot photos" href="https://www.google.com/search?q=Darem+Amin+birthday+party+photos" target="_blank" rel="noopener" aria-label="Search for party photos" title="Photos"></a>
+  <a class="hotspot video" href="https://www.youtube.com/results?search_query=Darem+Amin+birthday+party+video" target="_blank" rel="noopener" aria-label="Search for party videos on YouTube" title="Video"></a>
+  <button class="hotspot note" id="open-note" type="button" aria-label="Leave a sweet note" title="Leave a sweet note"></button>
+  <a class="hotspot back" href="index.html" aria-label="Back to cover" title="Back to cover"></a>
+</main>
+<div class="note-modal" id="note-modal" hidden>
+  <section class="note-card image-note-card" role="dialog" aria-modal="true" aria-labelledby="note-heading">
+    <img class="note-window-art" src="sweet-note-window.jpg" alt="A Sweet Wish for Daroumi — May all your sweet dreams be real soon. Love you Daroumi." />
+    <h1 id="note-heading" class="visually-hidden">A Sweet Wish for Daroumi</h1>
+    <button class="close-note image-close" id="close-note" type="button" aria-label="Close">×</button>
+    <form id="note-form" class="image-note-form">
+      <label class="visually-hidden" for="guest-message">Write your message for Daroumi</label>
+      <textarea id="guest-message" rows="4" maxlength="1000" placeholder="Write your message here…" required aria-label="Write your message here"></textarea>
+      <button class="image-send-button" type="submit" aria-label="Send to WhatsApp" title="Send to WhatsApp"></button>
+    </form>
+  </section>
+</div>
+<script>
+(() => {
+ const modal = document.getElementById('note-modal');
+ const form = document.getElementById('note-form');
+ const message = document.getElementById('guest-message');
+ const closeButton = document.getElementById('close-note');
+ document.getElementById('open-note').addEventListener('click', () => {
+   modal.hidden = false;
+   document.body.classList.add('modal-open');
+   setTimeout(() => message.focus({preventScroll:true}), 80);
+ });
+ closeButton.addEventListener('click', closeModal);
+ modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+ document.addEventListener('keydown', e => { if (e.key === 'Escape' && !modal.hidden) closeModal(); });
+ function closeModal(){ modal.hidden = true; document.body.classList.remove('modal-open'); form.reset(); }
+ form.addEventListener('submit', e => {
+   e.preventDefault();
+   const typed = message.value.trim();
+   if (!typed) { message.focus(); return; }
+   const text = 'A sweet note for Darem Amin 🎂\n\n' + typed + '\n\nMay all your sweet dreams be real soon .. Love you Daroumi ♥️';
+   window.open('https://wa.me/?text=' + encodeURIComponent(text), '_blank', 'noopener,noreferrer');
+ });
+})();
+</script>
+
+<script>
+(() => {
+ const audio = document.getElementById('birthday-song');
+ const enable = document.getElementById('music-enable');
+ try { const t = sessionStorage.getItem('daremSongTime'); if (t) audio.currentTime = parseFloat(t) || 0; } catch (_) {}
+ const start = () => audio.play().then(() => { enable.hidden = true; }).catch(() => { enable.hidden = false; });
+ enable.addEventListener('click', start);
+ document.addEventListener('click', () => { if (audio.paused) start(); }, { once: true });
+ window.addEventListener('pagehide', () => { try { sessionStorage.setItem('daremSongTime', String(audio.currentTime || 0)); } catch (_) {} });
+ audio.addEventListener('playing', () => { enable.hidden = true; });
+ start();
+})();
+</script>
+</body></html>

@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#101820"><title>Darem Amin | Birthday Invitation</title><link rel="stylesheet" href="style.css"></head>
+<body class="cover-page">
+<audio id="birthday-song" src="10.Kol_Sana_Wenta_Tayeb.mp3" autoplay loop preload="auto"></audio>
+<button id="music-enable" type="button" hidden style="position:fixed;z-index:10000;right:12px;bottom:12px;padding:10px 14px;border:1px solid #d6a04a;border-radius:24px;background:#111820;color:#ffe1a1;font:600 13px sans-serif;box-shadow:0 0 16px #d6a04a66">♫ Tap to play birthday song</button><main class="poster cover-poster" aria-label="Darem Amin birthday invitation cover"><img class="art" src="page1-cover.gif" alt="Darem Amin birthday invitation cover"><a class="hotspot open-invitation" href="invitation.html" aria-label="Open invitation" title="Open invitation"></a></main>
+<script>
+(() => {
+ const audio = document.getElementById('birthday-song');
+ const enable = document.getElementById('music-enable');
+ try { const t = sessionStorage.getItem('daremSongTime'); if (t) audio.currentTime = parseFloat(t) || 0; } catch (_) {}
+ const start = () => audio.play().then(() => { enable.hidden = true; }).catch(() => { enable.hidden = false; });
+ enable.addEventListener('click', start);
+ document.addEventListener('click', () => { if (audio.paused) start(); }, { once: true });
+ window.addEventListener('pagehide', () => { try { sessionStorage.setItem('daremSongTime', String(audio.currentTime || 0)); } catch (_) {} });
+ audio.addEventListener('playing', () => { enable.hidden = true; });
+ start();
+})();
+</script>
+</body></html>

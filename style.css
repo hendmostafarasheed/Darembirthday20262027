@@ -1,0 +1,43 @@
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#08131b}body{display:flex;justify-content:center;align-items:flex-start;min-height:100vh}.poster{position:relative;width:min(100vw,768px);line-height:0;margin:0 auto;overflow:hidden}.art{display:block;width:100%;height:auto}.hotspot{position:absolute;display:block;z-index:2;border:0;border-radius:40px;background:transparent;cursor:pointer;outline:none;-webkit-tap-highlight-color:transparent}.hotspot:focus-visible{outline:2px solid #ffe0a0;box-shadow:0 0 14px #ffbd57}.open-invitation{left:22.3%;top:88.15%;width:55%;height:5.7%}.invite-poster{width:min(100vw,640px)}.location{left:18%;top:61.2%;width:32%;height:5.6%}.rsvp{left:51%;top:61.2%;width:33%;height:5.6%}.photos{left:18%;top:67.5%;width:32%;height:5.5%}.video{left:51%;top:67.5%;width:33%;height:5.5%}.note{left:29%;top:74.5%;width:43%;height:6.4%}.back{left:25%;top:94%;width:50%;height:4%}@media(min-width:769px){body{padding:12px 0}.poster{box-shadow:0 0 35px #0008}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+
+/* Luxurious textured sweet-note popup */
+.note{padding:0;appearance:none;-webkit-appearance:none}
+.note-modal[hidden],#note-form[hidden],.gold-button[hidden]{display:none!important}
+.note-modal{position:fixed;inset:0;z-index:20;display:flex;align-items:center;justify-content:center;padding:18px;background:radial-gradient(ellipse at 50% 40%,rgba(35,29,20,.55),rgba(2,6,10,.94)),rgba(2,7,11,.82);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);line-height:normal;overflow-y:auto}
+.note-card{position:relative;isolation:isolate;width:min(100%,440px);max-height:calc(100dvh - 36px);overflow:auto;padding:25px 25px 26px;border:1px solid #d8a65d;border-radius:4px;text-align:center;color:#f8e6c6;background:radial-gradient(ellipse at 50% 0%,rgba(112,75,36,.23),transparent 35%),repeating-linear-gradient(115deg,rgba(255,255,255,.018) 0px,rgba(255,255,255,.018) 1px,transparent 1px,transparent 5px),linear-gradient(145deg,#171817 0%,#080d10 45%,#12110e 100%);box-shadow:0 0 0 4px rgba(187,128,52,.12),0 0 35px rgba(224,164,76,.24),inset 0 0 0 5px rgba(201,151,77,.08),inset 0 0 36px rgba(0,0,0,.95)}
+.note-card:before{content:"";position:absolute;inset:7px;z-index:-1;border:1px solid rgba(226,177,99,.58);pointer-events:none;background:radial-gradient(circle at 0 0,rgba(255,202,119,.18),transparent 20%),radial-gradient(circle at 100% 100%,rgba(255,202,119,.12),transparent 22%)}
+.note-card:after{content:"✦  ❧  ✦";display:block;color:#bb8745;font-size:12px;letter-spacing:8px;margin:18px 0 0;opacity:.8}
+.card-topline{display:flex;align-items:center;justify-content:center;gap:14px;color:#e8b969;margin:0 0 8px}.tiny-heart{font-size:11px;text-shadow:0 0 8px #e8a64a}.crown-mark{font-size:31px;line-height:1;text-shadow:0 2px 0 #6b421d,0 0 13px #dca54f;color:#f4ce87}
+.gold-heart{font-size:37px;line-height:1;color:#f5c36c;text-shadow:0 1px 0 #70451d,0 0 7px #f8bd4d,0 0 22px rgba(225,151,47,.75);animation:heartPulse 1.6s ease-in-out infinite;margin:4px 0 10px}
+.eyebrow{font:10px/1.5 Georgia,serif;letter-spacing:3px;color:#b98b50;margin:0 0 11px}
+.note-card h1{font-family:Georgia,'Times New Roman',serif;font-weight:400;font-size:clamp(22px,5vw,28px);line-height:1.25;margin:0 0 13px;color:#f7d69b;text-shadow:0 2px 12px rgba(224,163,77,.2)}
+.note-card h1 em{display:block;font-weight:400;font-size:1.38em;font-style:italic;color:#f0c27a;margin-top:2px;letter-spacing:.2px}
+.ornament-divider{display:flex;align-items:center;gap:12px;max-width:245px;margin:15px auto;color:#e7b565}.ornament-divider:before,.ornament-divider:after{content:"";height:1px;flex:1;background:linear-gradient(90deg,transparent,#c58d42)}.ornament-divider:after{background:linear-gradient(90deg,#c58d42,transparent)}.ornament-divider span{font-size:13px;text-shadow:0 0 9px #f2b84f}
+.sweet-message{font-family:Georgia,'Times New Roman',serif;font-size:clamp(17px,4vw,20px);line-height:1.55;margin:13px 0;color:#f8e4bd;text-shadow:0 1px 8px rgba(230,175,91,.13)}
+.love-message{font:17px/1.4 Georgia,serif;color:#eec784;margin:18px 0 8px}.love-message span{font-size:22px;text-shadow:0 0 10px #e9a847}
+.wax-seal{display:flex;align-items:center;justify-content:center;width:55px;height:55px;margin:14px auto 20px;border-radius:50%;border:2px solid #e2b15f;color:#ffe0a0;font-size:25px;background:radial-gradient(circle at 30% 25%,#f1cf83,#a96d2c 48%,#54351d 80%);box-shadow:0 0 0 4px rgba(195,137,59,.13),inset 0 0 0 3px rgba(255,225,153,.32),0 5px 14px #0009;text-shadow:0 1px 3px #55351a}
+.close-note{position:absolute;right:13px;top:10px;z-index:2;width:34px;height:34px;border:1px solid rgba(217,169,93,.45);border-radius:50%;background:#090d10;color:#f7d69c;font-size:24px;line-height:1;cursor:pointer;box-shadow:0 0 12px #0008}
+.gold-button{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:14px 17px;border:1px solid #f8d28b;border-radius:3px;background:linear-gradient(180deg,#4c321a 0%,#160f0a 46%,#392313 100%);color:#ffdfa0;font-family:Georgia,serif;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;font-size:13px;cursor:pointer;box-shadow:0 0 0 3px rgba(210,151,62,.12),0 0 19px rgba(225,155,55,.27),inset 0 1px 0 rgba(255,228,165,.45);transition:filter .2s,transform .2s}
+.gold-button:hover{filter:brightness(1.2);transform:translateY(-1px)}.gold-button:active{transform:translateY(1px)}
+#note-form{text-align:left;margin-top:16px}#note-form label{display:block;margin:0 0 9px;color:#e8bd78;font:13px/1.5 Georgia,serif;letter-spacing:.3px}#guest-message{display:block;width:100%;resize:vertical;min-height:108px;margin-bottom:14px;padding:14px;border:1px solid #9b713d;border-radius:3px;background:repeating-linear-gradient(135deg,rgba(255,255,255,.018) 0px,rgba(255,255,255,.018) 1px,transparent 1px,transparent 5px),#090e11;color:#fff3db;font:16px/1.55 Georgia,serif;box-shadow:inset 0 2px 12px #0009}#guest-message::placeholder{color:#a99478;font-style:italic}#guest-message:focus{outline:1px solid #f3c16e;box-shadow:0 0 0 3px rgba(243,193,110,.12),inset 0 2px 12px #0009}.small-help{font-size:12px;line-height:1.5;color:#c5b08e;text-align:center;margin:12px 0 0}
+@keyframes heartPulse{0%,100%{transform:scale(.94);filter:brightness(.92)}50%{transform:scale(1.08);filter:brightness(1.28)}}
+body.modal-open{overflow:hidden}
+@media(max-height:700px){.note-card{padding:18px 22px}.gold-heart{font-size:30px;margin:0 0 6px}.wax-seal{width:42px;height:42px;font-size:20px;margin:8px auto 12px}.note-card:after{margin-top:10px}.sweet-message{margin:8px 0}.love-message{margin:10px 0 5px}}
+
+
+/* Actual user-selected luxury Sweet Note artwork with live input and WhatsApp action */
+.visually-hidden{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+.note-modal{padding:14px;background:rgba(2,5,8,.82);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
+.image-note-card{width:min(90vw,520px);max-height:calc(100dvh - 28px);aspect-ratio:903 / 1110;overflow:hidden;padding:0;border:0;border-radius:0;background:transparent;box-shadow:0 0 32px rgba(226,164,74,.22);}
+.image-note-card:before,.image-note-card:after{display:none}
+.note-window-art{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;display:block;pointer-events:none;user-select:none}
+.image-close{top:2.5%;right:3%;width:7%;height:4.8%;border:0;border-radius:50%;background:transparent;color:transparent;box-shadow:none;font-size:0;z-index:5}
+.image-close:focus-visible{outline:1px solid #f6ca80}
+.image-note-form{position:absolute;inset:0;margin:0!important;text-align:left;z-index:4}
+.image-note-form #guest-message{position:absolute;left:6.3%;top:69.3%;width:87%;height:13.7%;min-height:0;resize:none;margin:0;padding:2.4% 3.5%;border:0;border-radius:10px;background:rgba(5,11,15,.94);color:#fff0d0;font:clamp(12px,2.8vw,16px)/1.45 Georgia,serif;box-shadow:none;outline:none}
+.image-note-form #guest-message::placeholder{color:#a99478;font-style:italic;opacity:.95}
+.image-note-form #guest-message:focus{outline:1px solid rgba(242,190,108,.9);box-shadow:0 0 0 2px rgba(243,193,110,.12)}
+.image-send-button{position:absolute;left:22%;top:87.1%;width:56%;height:9.2%;padding:0;border:0;border-radius:20px;background:transparent;cursor:pointer;box-shadow:none}
+.image-send-button:hover{background:rgba(255,196,90,.09);filter:brightness(1.12)}
+.image-send-button:focus-visible{outline:2px solid #ffdc9a;outline-offset:1px}
+@media(max-height:650px){.image-note-card{width:min(78vw,420px)}}
